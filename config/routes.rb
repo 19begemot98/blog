@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get "games/index"
+  resources :games
   root "games#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,13 +1,33 @@
-<h1>Мои пройденные игры</h1>
+<h1>Game Library</h1>
 
-<% if @games.any? %>
-  <ul>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Developer</th>
+      <th>Genre</th>
+      <th>Platform</th>
+      <th>Release date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
     <% @games.each do |game| %>
-      <li>
-        <%= game.title %> (<%= game.platform %>) — <%= game.developer %>
-      </li>
+      <tr>
+        <td><%= game.title %></td>
+        <td><%= game.developer %></td>
+        <td><%= game.genre %></td>
+        <td><%= game.platform %></td>
+        <td><%= game.release_date %></td>
+        <td><%= link_to 'Show', game %></td>
+        <td><%= link_to 'Edit', edit_game_path(game) %></td>
+        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
-  </ul>
-<% else %>
-  <p>Игр пока нет. Добавьте первую!</p>
-<% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game', new_game_path %>

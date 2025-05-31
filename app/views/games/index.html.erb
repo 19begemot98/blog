@@ -1,2 +1,13 @@
-<h1>Games#index</h1>
-<p>FWHATAFCUKMOTHERFUCKA</p>
+<h1>Мои пройденные игры</h1>
+
+<% if @games.any? %>
+  <ul>
+    <% @games.each do |game| %>
+      <li>
+        <%= game.title %> (<%= game.platform %>) — <%= game.developer %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Игр пока нет. Добавьте первую!</p>
+<% end %>

@@ -1,33 +1,64 @@
-<h1>Game Library</h1>
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold text-primary">🎮 Game Library</h1>
+    <p class="lead text-muted">Ваша коллекция лучших игр</p>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Developer</th>
-      <th>Genre</th>
-      <th>Platform</th>
-      <th>Release date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <%= link_to new_game_path, class: "btn btn-success btn-lg mb-4 shadow-sm" do %>
+    <i class="bi bi-plus-circle"></i> Добавить игру
+  <% end %>
 
-  <tbody>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     <% @games.each do |game| %>
-      <tr>
-        <td><%= game.title %></td>
-        <td><%= game.developer %></td>
-        <td><%= game.genre %></td>
-        <td><%= game.platform %></td>
-        <td><%= game.release_date %></td>
-        <td><%= link_to 'Show', game %></td>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="con">
+        <div class="card h-100 border-0 shadow-sm hover-effect">
+          <div class="card-header bg-dark text-white">
+            <h5 class="card-title mb-0"><%= game.title %></h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <span class="badge bg-primary me-2"><%= game.genre %></span>
+              <span class="badge bg-secondary"><%= game.platform %></span>
+            </div>
+            <p class="card-text">
+              <i class="bi bi-people-fill text-muted"></i> <%= game.developer %>
+            </p>
+            <p class="card-text">
+              <i class="bi bi-calendar-event text-muted"></i> <%= game.release_date %>
+            </p>
+          </div>
+          <div class="card-footer bg-transparent border-top-0">
+            <div class="d-flex justify-content-between">
+              <%= link_to game, class: "btn btn-sm btn-outline-primary" do %>
+                <i class="bi bi-eye"></i> Подробнее
+              <% end %>
+              <%= link_to edit_game_path(game), class: "btn btn-sm btn-outline-warning" do %>
+                <i class="bi bi-pencil"></i> Редактировать
+              <% end %>
+              
+              <%= link_to game_path(game), 
+                    method: :delete, 
+                    data: { turbo_method: :delete, turbo_confirm: "Вы уверены, что хотите удалить игру?" },
+                    class: "btn btn-sm btn-outline-danger" do %>
+                    <i class="bi bi-trash"></i> Удалить
+              <% end %>
+              
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
+  <div class="d-flex justify-content-center mt-5">
+    <%= will_paginate @games, theme: 'bootstrap5' %>
+  </div>
+</div>
 
-<%= link_to 'New Game', new_game_path %>
+<style>
+  .hover-effect:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+  }
+</style>

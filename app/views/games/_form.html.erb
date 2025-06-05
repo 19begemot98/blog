@@ -1,0 +1,67 @@
+<%= form_with(model: game, local: true, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+  <% if game.errors.any? %>
+    <div class="alert alert-danger">
+      <h5>Исправьте следующие ошибки:</h5>
+      <ul>
+        <% game.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= form.label :title, "Название игры", class: 'form-label fw-bold' %>
+    <%= form.text_field :title, class: 'form-control form-control-lg', required: true %>
+    <div class="invalid-feedback">Пожалуйста, укажите название игры</div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <%= form.label :developer, "Разработчик", class: 'form-label fw-bold' %>
+      <%= form.text_field :developer, class: 'form-control', required: true %>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :release_date, "Дата выхода", class: 'form-label fw-bold' %>
+      <%= form.date_field :release_date, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <%= form.label :genre, "Жанр", class: 'form-label fw-bold' %>
+      <%= form.select :genre, 
+          ['RPG', 'Action', 'Adventure', 'Strategy', 'Simulation', 'Sports'], 
+          {}, { class: 'form-select' } %>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :platform, "Платформа", class: 'form-label fw-bold' %>
+      <%= form.select :platform, 
+          ['PC', 'PlayStation 5', 'Xbox Series X', 'Nintendo Switch', 'Mobile'], 
+          {}, { class: 'form-select' } %>
+    </div>
+  </div>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+    <%= link_to 'Отмена', games_path, class: 'btn btn-outline-secondary me-md-2' %>
+    <%= form.submit action_name.capitalize == 'New' ? 'Добавить игру' : 'Обновить данные', 
+        class: 'btn btn-primary px-4' %>
+  </div>
+<% end %>
+
+<script>
+// Валидация форм
+(function() {
+  'use strict'
+  const forms = document.querySelectorAll('.needs-validation')
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>

@@ -1,43 +1,56 @@
+@import "bootstrap";
+
+
+/* Кастомные стили */
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+  background-color: linear-gradient(to bottom, #3e8e41, #2d6b2a); /*#f3e5d2*/;
+  
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+a {
+  text-decoration: none; /* Подчёркивания не будет */
+  color: rgb(212, 71, 113); /* Стандартный синий */
+  font-weight: bold; /* И гарнитура полужирной */
+}
+.card {
+  border-radius: 0.75rem;
+  overflow: hidden;
 }
 
-table, th, td {
-  border: 1px solid #ddd;
+.card-header {
+  font-weight: 600;
 }
 
-th, td {
-  padding: 8px;
-  text-align: left;
+.hover-effect {
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
 }
 
-th {
-  background-color: #f2f2f2;
+.btn {
+  border-radius: 0.5rem;
+  font-weight: 500;
 }
 
-tr:nth-child(even) {
-  background-color: #f9f9f9;
+/* Анимация для кнопок */
+.btn:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s;
 }
 
-.field {
-  margin-bottom: 10px;
-}
-
-.field label {
-  display: inline-block;
-  width: 120px;
-}
-
-.actions {
-  margin-top: 15px;
-}
-
-.notice {
-  color: green;
+/* Стили для пагинации */*
+.pagination {
+  .page-item {
+    .page-link {
+      border-radius: 0.5rem !important;
+      margin: 0 3px;
+    }
+    &.active .page-link {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
+  }
 }

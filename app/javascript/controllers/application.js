@@ -1,4 +1,13 @@
 import { Application } from "@hotwired/stimulus"
+// app/assets/javascripts/application.js
+
+//= require jquery3
+//= require popper
+//= require bootstrap
+//= require rails-ujs  // Это критически важно для работы data-method
+//= require turbolinks
+//= require_tree .
+
 
 const application = Application.start()
 

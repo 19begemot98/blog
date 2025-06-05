@@ -2,7 +2,9 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
   def index
-    @games = Game.all.order(:title)
+    #@games = Game.all.order(:title)
+    @games = Game.paginate(page: params[:page], per_page: 10).order(:title)
+
   end
 
   def show
@@ -33,10 +35,14 @@ class GamesController < ApplicationController
     end
   end
 
-  def destroy
-    @game.destroy
-    redirect_to games_url, notice: 'Game was successfully destroyed.'
+ def destroy
+  @game = Game.find(params[:id])
+  @game.destroy
+  respond_to do |format|
+    format.html { redirect_to games_url, notice: 'Игра была успешно удалена.' }
+    format.json { head :no_content }
   end
+end
 
   private
     def set_game

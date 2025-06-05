@@ -1,29 +1,56 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @game.title %>
-</p>
-
-<p>
-  <strong>Developer:</strong>
-  <%= @game.developer %>
-</p>
-
-<p>
-  <strong>Genre:</strong>
-  <%= @game.genre %>
-</p>
-
-<p>
-  <strong>Platform:</strong>
-  <%= @game.platform %>
-</p>
-
-<p>
-  <strong>Release date:</strong>
-  <%= @game.release_date %>
-</p>
-
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<<div class="container py-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-dark text-white">
+      <h2 class="mb-0"><%= @game.title %></h2>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="text-center mb-4">
+            <div class="ratio ratio-1x1 bg-light rounded">
+              <div class="d-flex align-items-center justify-content-center">
+                <i class="bi bi-controller display-1 text-muted"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="mb-4">
+            <h5 class="text-primary">Информация об игре</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <strong><i class="bi bi-building"></i> Разработчик:</strong> 
+                <span class="float-end"><%= @game.developer %></span>
+              </li>
+              <li class="list-group-item">
+                <strong><i class="bi bi-tags"></i> Жанр:</strong> 
+                <span class="badge bg-primary float-end"><%= @game.genre %></span>
+              </li>
+              <li class="list-group-item">
+                <strong><i class="bi bi-laptop"></i> Платформа:</strong> 
+                <span class="badge bg-secondary float-end"><%= @game.platform %></span>
+              </li>
+              <li class="list-group-item">
+                <strong><i class="bi bi-calendar"></i> Дата выхода:</strong> 
+                <span class="float-end"><%= @game.release_date %></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer bg-light">
+      <div class="d-flex justify-content-between">
+        <%= link_to games_path, class: "btn btn-outline-secondary" do %>
+          <i class="bi bi-arrow-left"></i> Назад к списку
+        <% end %>
+        <div>
+          <%= link_to edit_game_path(@game), class: "btn btn-warning me-2" do %>
+            <i class="bi bi-pencil"></i> Редактировать
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

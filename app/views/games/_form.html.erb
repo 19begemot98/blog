@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+  <div class="d-flex gap-2 justify-content-end mt-4">
     <%= link_to 'Отмена', games_path, class: 'btn btn-outline-secondary me-md-2' %>
     <%= form.submit action_name.capitalize == 'New' ? 'Добавить игру' : 'Обновить данные', 
         class: 'btn btn-primary px-4' %>

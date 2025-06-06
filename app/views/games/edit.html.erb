@@ -8,7 +8,6 @@
           <h3 class="edit-title mb-4">
             <%= action_name.capitalize == 'New' ? '✏️ Добавить новую игру' : '✏️ Редактировать игру' %>
           </h3>
-
           <div class="card-body">
             <%= render 'form', game: @game %>
           </div>

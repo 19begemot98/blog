@@ -1,52 +1,64 @@
 
-<<div class="container py-5">
-  <div class="card shadow-lg">
-    <div class="card-header bg-dark text-white">
-      <h2 class="mb-0"><%= @game.title %></h2>
+<%= stylesheet_link_tag "show", "data-turbo-track": "reload" %>
+<div class="game-show-container">
+  <div class="game-card-wrapper">
+    <div class="game-header">
+      <h1 class="game-title"><%= @game.title %></h1>
     </div>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="text-center mb-4">
-            <div class="ratio ratio-1x1 bg-light rounded">
-              <div class="d-flex align-items-center justify-content-center">
-                <i class="bi bi-controller display-1 text-muted"></i>
-              </div>
+
+    <div class="game-content">
+     
+
+      <div class="game-info">
+        <h2 class="section-title">Информация об игре</h2>
+        
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="bi bi-building"></i>
+            </div>
+            <div class="info-content">
+              <span class="info-label">Разработчик</span>
+              <span class="info-value"><%= @game.developer %></span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="bi bi-tags"></i>
+            </div>
+            <div class="info-content">
+              <span class="info-label">Жанр</span>
+              <span class="info-value genre-badge"><%= @game.genre %></span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="bi bi-laptop"></i>
+            </div>
+            <div class="info-content">
+              <span class="info-label">Платформа</span>
+              <span class="info-value platform-badge"><%= @game.platform %></span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="bi bi-calendar"></i>
+            </div>
+            <div class="info-content">
+              <span class="info-label">Дата выхода</span>
+              <span class="info-value"><%= @game.release_date.strftime("%d.%m.%Y") if @game.release_date %></span>
             </div>
           </div>
         </div>
-        <div class="col-md-8">
-          <div class="mb-4">
-            <h5 class="text-primary">Информация об игре</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <strong><i class="bi bi-building"></i> Разработчик:</strong> 
-                <span class="float-end"><%= @game.developer %></span>
-              </li>
-              <li class="list-group-item">
-                <strong><i class="bi bi-tags"></i> Жанр:</strong> 
-                <span class="badge bg-primary float-end"><%= @game.genre %></span>
-              </li>
-              <li class="list-group-item">
-                <strong><i class="bi bi-laptop"></i> Платформа:</strong> 
-                <span class="badge bg-secondary float-end"><%= @game.platform %></span>
-              </li>
-              <li class="list-group-item">
-                <strong><i class="bi bi-calendar"></i> Дата выхода:</strong> 
-                <span class="float-end"><%= @game.release_date %></span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-footer bg-light">
-      <div class="d-flex justify-content-between">
-        <%= link_to games_path, class: "btn btn-outline-secondary" do %>
-          <i class="bi bi-arrow-left"></i> Назад к списку
-        <% end %>
-        <div>
-          <%= link_to edit_game_path(@game), class: "btn btn-warning me-2" do %>
+
+        <div class="game-actions">
+          <%= link_to games_path, class: "btn back-btn" do %>
+            <i class="bi bi-arrow-left"></i> Назад к списку
+          <% end %>
+          <%= link_to edit_game_path(@game), class: "btn edit-btn" do %>
             <i class="bi bi-pencil"></i> Редактировать
           <% end %>
         </div>
@@ -54,3 +66,4 @@
     </div>
   </div>
 </div>
+

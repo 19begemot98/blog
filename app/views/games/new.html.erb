@@ -1,14 +1,97 @@
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <div class="card shadow">
-        <div class="card-header bg-dark text-white">
-          <h3 class="mb-0"><%= action_name.capitalize == 'New' ? 'Добавить новую игру' : 'Редактировать игру' %></h3>
+<%= stylesheet_link_tag "new", "data-turbo-track": "reload" %>
+<div class="game-form-container">
+  <div class="game-form-wrapper">
+    <div class="game-form-header">
+      <h1>
+        <i class="bi bi-plus-circle"></i>
+        <%= action_name.capitalize == 'New' ? 'Добавить новую игру' : 'Редактировать игру' %>
+      </h1>
+    </div>
+
+    <div class="game-form-body">
+      <%= form_with(model: @game, class: "game-form") do |f| %>
+        <div class="form-group">
+          <label class="form-label">
+            <i class="bi bi-card-heading"></i> Название игры
+          </label>
+          <%= f.text_field :title, 
+          class: "form-input", 
+          placeholder: "Введите название игры",
+          required: true,
+          minlength: 3,
+          maxlength: 100,
+          pattern: "^[A-Za-zА-Яа-я0-9\\s\\-\\:]+$" %>
+          <small class="form-hint">Пожалуйста, укажите название игры</small>
         </div>
-        <div class="card-body">
-          <%= render 'form', game: @game %>
+
+        <div class="form-group">
+          <label class="form-label">
+            <i class="bi bi-building"></i> Разработчик
+          </label>
+          <%= f.text_field :developer, 
+        class: "form-input #{'is-invalid' if @game.errors[:developer].any?}", 
+        placeholder: "Введите название разработчика",
+        required: true,
+        minlength: 2,
+        maxlength: 50,
+        pattern: "^[A-Za-zА-Яа-я0-9\\s\\-\\&\\.,]+$" %>
+  
+  <% if @game.errors[:developer].any? %>
+    <div class="invalid-feedback d-block">
+      <%= @game.errors[:developer].join(', ') %>
+    </div>
+  <% else %>
+    <div class="invalid-feedback">
+      Пожалуйста, введите корректное название разработчика (от 2 до 50 символов)
+    </div>
+  <% end %>
         </div>
-      </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            <i class="bi bi-calendar"></i> Дата выхода
+          </label>
+          <%= f.date_field :release_date, class: "form-input", placeholder: "дд.мм.гггг" %>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-tags"></i> Жанр
+            </label>
+            <div class="genre-tags">
+              <% ["RPG", "Action", "Adventure", "Strategy", "Simulator", "Sports"].each do |genre| %>
+                <label class="genre-tag <%= 'active' if @game.genre == genre %>">
+                  <%= f.radio_button :genre, genre, class: "d-none" %>
+                  <%= genre %>
+                </label>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              <i class="bi bi-laptop"></i> Платформа
+            </label>
+            <div class="platform-tags">
+              <% ["PC", "PlayStation", "Xbox", "Nintendo"].each do |platform| %>
+                <label class="platform-tag <%= 'active' if @game.platform == platform %>">
+                  <%= f.radio_button :platform, platform, class: "d-none" %>
+                  <%= platform %>
+                </label>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= link_to games_path, class: "btn cancel-btn" do %>
+            <i class="bi bi-x-circle"></i> Отмена
+          <% end %>
+          <%= f.submit action_name == 'new' ? 'Добавить игру' : 'Обновить данные', 
+                      class: "btn submit-btn" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

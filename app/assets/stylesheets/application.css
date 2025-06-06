@@ -126,6 +126,8 @@ footer {
   transition: transform 0.2s;
 }
 
+
+
 /* Исправление для пагинации */
 .pagination {
   .page-item {

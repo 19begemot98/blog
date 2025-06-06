@@ -1,18 +1,110 @@
 @import "bootstrap";
 
-
 /* Кастомные стили */
 body {
-  background-color: linear-gradient(to bottom, #3e8e41, #2d6b2a); /*#f3e5d2*/;
-  
+  background: linear-gradient(to bottom, #3e8e41, #2d6b2a);
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  color: #fff;
 }
 
 a {
-  text-decoration: none; /* Подчёркивания не будет */
-  color: rgb(212, 71, 113); /* Стандартный синий */
-  font-weight: bold; /* И гарнитура полужирной */
+  text-decoration: none;
+  color: rgb(212, 71, 113);
+  font-weight: bold;
 }
+
+/* Стили для игровой библиотеки */
+.game-library {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.games-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3rem;
+  justify-items: center;
+  margin: 2rem 0;
+}
+
+.game-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.game-card h3 {
+  margin-top: 0;
+  color: #2d6b2a;
+}
+
+.date {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.actions {
+  margin-top: 1rem;
+}
+
+.actions a {
+  margin-right: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  background: rgba(212, 71, 113, 0.1);
+  transition: all 0.2s;
+}
+
+.actions a:hover {
+  background: rgba(212, 71, 113, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Стили для добавления игры */
+.add-game {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.add-game label {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Футер */
+footer {
+  margin-top: 8rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .games-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .game-library {
+    padding: 1rem;
+  }
+}
+
+/* Общие стили Bootstrap */
 .card {
   border-radius: 0.75rem;
   overflow: hidden;
@@ -22,26 +114,17 @@ a {
   font-weight: 600;
 }
 
-.hover-effect {
-  transition: all 0.3s ease;
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  }
-}
-
 .btn {
   border-radius: 0.5rem;
   font-weight: 500;
 }
 
-/* Анимация для кнопок */
 .btn:hover {
   transform: translateY(-2px);
   transition: transform 0.2s;
 }
 
-/* Стили для пагинации */*
+/* Исправление для пагинации */
 .pagination {
   .page-item {
     .page-link {

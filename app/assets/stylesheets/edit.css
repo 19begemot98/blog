@@ -1,0 +1,120 @@
+.game-edit-container {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  .edit-form-wrapper {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    color: #333;
+  }
+
+  .edit-title {
+    color: #2d6b2a;
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2d6b2a;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .form-control:focus {
+    border-color: #3e8e41;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(62, 142, 65, 0.2);
+  }
+
+  .form-text {
+    display: block;
+    margin-top: 0.25rem;
+    color: #666;
+    font-size: 0.85rem;
+  }
+
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .game-tag {
+    padding: 0.5rem 1rem;
+    background: #eee;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+  }
+
+  .game-tag.active {
+    background: #3e8e41;
+    color: white;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary {
+    background: #f1f1f1;
+    color: #666;
+  }
+
+  .btn-secondary:hover {
+    background: #e1e1e1;
+  }
+
+  .btn-primary {
+    background: #3e8e41;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #2d6b2a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .edit-form-wrapper {
+      padding: 1.5rem;
+    }
+    
+    .form-actions {
+      flex-direction: column;
+    }
+    
+    .btn {
+      width: 100%;
+    }
+  }

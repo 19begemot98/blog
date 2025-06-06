@@ -15,13 +15,13 @@
     <div class="games-container">
       <% @games.each do |game| %>
         <div class="game-card">
-          <div class="card-header" style="background-color: #3e8e41; color: white;">
+          <div class="card-header">
             <h3><%= game.title %></h3>
           </div>
           <div class="card-body">
             <div class="mb-3">
-              <span class="badge" style="background-color: #0d6efd;"><%= game.genre %></span>
-              <span class="badge" style="background-color: #6c757d; margin-left: 0.5rem;"><%= game.platform %></span>
+              <span class="badge"><%= game.genre %></span>
+              <span class="badge" style="margin-left: 0.5rem;"><%= game.platform %></span>
             </div>
             <p class="card-text">
               <i class="bi bi-people-fill text-muted"></i> <%= game.developer %>
